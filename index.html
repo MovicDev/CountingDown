@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: #c9e7f3;
+    }
+</style>
+<body>
+    <div class="mx-auto gap-2 p-3 mt-7 col-lg-4 col-10 text-light rounded-2" style="background-image: url('IMG_0072.JPG');
+    background-size: cover;
+    background-position:center;
+    background-repeat: no-repeat;">
+        <div class="d-flex column-2 justify-content-between">
+            <p>⌚</p>
+            <p style="font-size: 10px;">Design By <span class="fw-bold">MovicDev.</span></p>
+        </div>
+        <h1 class="fs-4 mb-3">Official artwork for my forthcoming EP-"Before The Feast"</h1>
+        <p>Out June 7, 2024</p>
+        <div class="p-3 rounded-3 mt-3 shadow-sm" id="countDiv">
+            <div class="text-center row justify-content-between">
+                <p class="col"><span class="fw-bold" id="days" style="font-size: 40px;"></span><br><span class="text-light text-uppercase">days</span></p>
+                <p class="col"><span class="fw-bold" id="hours" style="font-size: 40px;"></span><br><span class="text-light text-uppercase">hours</span></p>
+                <p class="col"><span class="fw-bold" id="minutes" style="font-size: 40px;"></span><br><span class="text-light text-uppercase">minutes</span></p>
+                <p class="col"><span class="fw-bold" id="seconds" style="font-size: 40px;"></span><br><span class="text-light text-uppercase">seconds</span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let countDownDate = new Date("June 7, 2024").getTime();
+
+        let countingInterval = setInterval(function() {
+            let current = new Date().getTime();
+            let distance = countDownDate - current;
+
+            if (distance < 0) {
+                clearInterval(countingInterval);
+                document.getElementById("countDiv").innerHTML = "Official artwork for EP-'Before The Feast' is Today👏";
+                return;
+            }
+
+            let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? `0${days}` : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? `0${hours}` : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? `0${minutes}` : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? `0${seconds}` : seconds;
+        }, 1000);
+    </script>
+</body>
+</html>
